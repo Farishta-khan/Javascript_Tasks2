@@ -4,23 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Javascript Tasks</title>
+    <style>
+        body{
+            background: white;
+            color: black;
+        }
+        .dark{
+            background: black;
+            color: white;
+        }
+        .highlight{
+            color: yellowgreen;  
+        }
+    </style>
 </head>
-<body>
-    <h3>Exercise 1</h3>
+<body >
+    <h3>Exercise 1</h3>    <!--Exercise 1-->
     <button id="btn">Click Me</button>
     <ul>
     </ul>
     <hr>
 
-    <h3>Exercise 2</h3>
-    <ol id="list">
-        <li>Item</li>
-        <li>Item</li>
-        <li>Item</li>
-        <li>Item</li>
-        <li>Item</li>
+    <h3>Exercise 2</h3>  <!--Exercise 2-->
+    <ol id="list">      <!--Orderd List-->
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+        <li>Item 5</li>
     </ol>
+    <hr>
 
+    <h3>Exercise 3</h3> <!--Exercise 3-->
+
+        <button id="toggle">Dark Mode</button>
+        <p>This button activate mode of the body!</p>
+        <hr>
+
+        <h3>Exercise 4</h3> <!--Exercise 4-->
+        <ul id="item">
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+            <li>Item 4</li>
+            <li>Item 5</li>
+        </ul>
+        <hr>
+
+        <h3>Exercise 5</h3> <!--Exercise 5-->
+        
+
+    
+
+</div>
     
 </body>
 <script>
@@ -34,19 +70,49 @@
 
     });
     //Exercise 2
-  let list = document.querySelectorAll("#list li");
+  let list = document.querySelectorAll("#list li");   // select all the <li> elements in the #list like NodeLists
 
-    list.forEach(function(li) {
+    list.forEach(function(li) { // looop over every li
 
-    let btn = document.createElement("button");
+    let btn = document.createElement("button"); // create a <buttton>delete</button>
     btn.textContent = " Delete";
 
     btn.onclick = function() {
         li.remove();
     };
 
-    li.appendChild(btn);
+    li.appendChild(btn);      // Add button to each <li> item
+
 });
+
+    //Exercise 3            // Adding/removing dark mode by clicking a button
+    let toggle=document.getElementById('toggle');
+    toggle.addEventListener('click',function(){
+        document.body.classList.toggle('dark');  //Select the <body> elemenet
+                                                //Access the list of the classes on <body>
+                                                    //If the class dark exist reove it if not then add it 
+        
+        if(document.body.classList.contains('dark')){   // this chnagethe textContent of the button dynamically
+            toggle.textContent='Light Mode';
+
+        }
+        else{
+        toggle.textContent='Dark Mode'
+        }
+    });
+
+    //Exercise 4
+    let item=document.querySelectorAll('#item li');   // taking all the li into items as Node List
+    item.forEach(function(li){              // applying loop on each li item
+        li.addEventListener('click',function(){   //adding click function to every li 
+            item.forEach(function(item){
+                item.classList.remove('highlight');  //Remove highlight from all
+            });
+            this.classList.add('highlight');  //add highlight to the one that is cliked
+
+        });
+    });
+    
 
 </script>
 </html>
