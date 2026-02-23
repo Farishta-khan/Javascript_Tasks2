@@ -52,7 +52,9 @@
         <hr>
 
         <h3>Exercise 5</h3> <!--Exercise 5-->
-        
+        <input type="text" id="input">
+        <button id="aBtn">Add Item</button>
+        <ul id="add"></ul>
 
     
 
@@ -112,6 +114,30 @@
 
         });
     });
+
+    // Exercise 5   // Event deligation 
+    let ul=document.getElementById('add');
+    let aBtn=document.getElementById('aBtn');
+    aBtn.addEventListener('click',function(){
+        let input=document.getElementById('input').value;
+        let li=document.createElement('li');
+        li.textContent=input + '';
+        let delBtn=document.createElement('button');
+        delBtn.textContent='Delete';
+        delBtn.classList.add('delete');
+
+        li.appendChild(delBtn);
+        ul.appendChild(li);
+
+        
+    });
+    ul.addEventListener('click',function(e){
+        if(e.target.classList.contains('delete')){
+            e.target.parentElement.remove();
+        }
+
+    });
+    
     
 
 </script>
