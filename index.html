@@ -137,6 +137,50 @@
         }
 
     });
+
+    // Exercise 6
+    const students=[
+        {name:"Ali",marks:80},
+        {name:"Ahmad",marks:40},
+        {name:"Zumar",marks:49},
+        {name:"Sara",marks:75},
+        {name:"Farishta",marks:90},
+
+    ];
+    // Task1:
+    let pass=students.filter(function(student){
+        return student.marks>50;   //Select items
+    });
+    console.log(pass);
+
+    //task 2
+    let totalMarka=students.reduce(function(total,student){
+        return total+student.marks;   //Combine into one vale
+    },0);
+    console.log(totalMarka);
+
+    //task 3:
+    let names=students.map(function(student){
+        return student.name; //    transfer into new array
+    });
+    console.log(names);
+
+    //Extra taskk     // average 
+    let average=students.reduce(function(total,student){
+        return  total+student.marks;
+    },0)/students.length;
+    console.log(average);
+       // fail students array
+    let fail=students.filter(function(student){
+        return student.marks<60;
+    });
+    console.log(fail);
+
+    let failedStudents=students.filter( s => s.marks<60).map(s=> s.name);
+    console.log(failedStudents);
+
+
+
     
     
 
